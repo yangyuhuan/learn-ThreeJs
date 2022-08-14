@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { Scene } from "three";
 //导入轨道控制器
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
@@ -43,7 +42,7 @@ document.body.appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 function render() {
-  renderer.render(Scene, camera);
+  renderer.render(scece, camera);
   //渲染下一帧的时候会调用render函数
   requestAnimationFrame(render);
 }

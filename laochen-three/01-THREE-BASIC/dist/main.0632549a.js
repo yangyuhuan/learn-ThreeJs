@@ -40760,10 +40760,18 @@ var renderer = new THREE.WebGLRenderer(); //设置渲染的尺寸大小
 renderer.setSize(window.innerWidth, window.innerHeight); //将webgl渲染的canvas内容添加到body里面
 
 document.body.appendChild(renderer.domElement); //5.使用渲染器，通过相机将场景渲染进来
-
-renderer.render(scece, camera); //创建轨道控制器
+//renderer.render(scece, camera);
+//创建轨道控制器
 
 var controls = new _OrbitControls.OrbitControls(camera, renderer.domElement);
+
+function render() {
+  renderer.render(scece, camera); //渲染下一帧的时候会调用render函数
+
+  requestAnimationFrame(render);
+}
+
+render();
 },{"three":"../node_modules/three/build/three.module.js","three/examples/jsm/controls/OrbitControls":"../node_modules/three/examples/jsm/controls/OrbitControls.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -40792,7 +40800,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "47162" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "9773" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
