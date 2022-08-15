@@ -38454,15 +38454,15 @@ var PointLightHelper = /*#__PURE__*/function (_Mesh3) {
     // TODO: delete this comment?
     const distanceGeometry = new THREE.IcosahedronGeometry( 1, 2 );
     const distanceMaterial = new THREE.MeshBasicMaterial( { color: hexColor, fog: false, wireframe: true, opacity: 0.1, transparent: true } );
-    this.lightSphere = new THREE.Mesh( bulbGeometry, bulbMaterial );
+    	this.lightSphere = new THREE.Mesh( bulbGeometry, bulbMaterial );
     this.lightDistance = new THREE.Mesh( distanceGeometry, distanceMaterial );
-    const d = light.distance;
-    if ( d === 0.0 ) {
-    	this.lightDistance.visible = false;
-    } else {
-    	this.lightDistance.scale.set( d, d, d );
-    }
-    this.add( this.lightDistance );
+    	const d = light.distance;
+    	if ( d === 0.0 ) {
+    		this.lightDistance.visible = false;
+    	} else {
+    		this.lightDistance.scale.set( d, d, d );
+    	}
+    	this.add( this.lightDistance );
     */
 
 
@@ -38485,12 +38485,12 @@ var PointLightHelper = /*#__PURE__*/function (_Mesh3) {
       }
       /*
       const d = this.light.distance;
-      	if ( d === 0.0 ) {
-      		this.lightDistance.visible = false;
-      	} else {
-      		this.lightDistance.visible = true;
+      		if ( d === 0.0 ) {
+      			this.lightDistance.visible = false;
+      		} else {
+      			this.lightDistance.visible = true;
       	this.lightDistance.scale.set( d, d, d );
-      	}
+      		}
       */
 
     }
@@ -39088,7 +39088,7 @@ var BoxHelper = /*#__PURE__*/function (_LineSegments5) {
       1/___0/|
       | 6__|_7
       2/___3/
-      	0: max.x, max.y, max.z
+      		0: max.x, max.y, max.z
       1: min.x, max.y, max.z
       2: min.x, min.y, max.z
       3: max.x, min.y, max.z
@@ -46491,7 +46491,11 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 //导入轨道控制器
 //导入动画库
+<<<<<<< HEAD
 //目标：掌握gsap设置各种动画效果
+=======
+// 目标：js控制画面全屏
+>>>>>>> f985a6fd0904c5cd8c81a2ed0c6e4f74b0f73301
 //1.创建场景
 var scene = new THREE.Scene(); //2.创建相机
 
@@ -46524,6 +46528,7 @@ renderer.setSize(window.innerWidth, window.innerHeight); //将webgl渲染的canv
 
 document.body.appendChild(renderer.domElement); //5.使用渲染器，通过相机将场景渲染进来
 //renderer.render(scene, camera);
+<<<<<<< HEAD
 //6.创建轨道控制器
 
 var controls = new _OrbitControls.OrbitControls(camera, renderer.domElement); //7.添加坐标轴辅助器
@@ -46550,12 +46555,78 @@ function render() {
     cube.position.x = 0;
   }
 
+=======
+//创建轨道控制器
+
+var controls = new _OrbitControls.OrbitControls(camera, renderer.domElement); //添加坐标轴辅助器
+
+var axesHelper = new THREE.AxesHelper(5);
+scene.add(axesHelper);
+
+var animate1 = _gsap.default.to(cube.position, {
+  x: 5,
+  duration: 5,
+  ease: "power1.inOut",
+  //设置重复的次数,无限次循环-1
+  repeat: -1,
+  //往返运动
+  yoyo: true,
+  delay: 2,
+  onComplete: function onComplete() {
+    console.log('动画完成');
+  },
+  conStart: function conStart() {
+    console.log("动画开始");
+  }
+});
+
+_gsap.default.to(cube.rotation, {
+  x: 2 * Math.PI,
+  duration: 5,
+  ease: 'power1.inOut'
+});
+
+window.addEventListener("dblclick", function () {
+  // if(animate1.isActive()){
+  //   animate1.pause()
+  // }else{
+  //   animate1.resume()
+  // }
+  var fullScreenElement = document.fullscreenElement;
+
+  if (!fullScreenElement) {
+    //双击控制屏幕进入全屏,退出全屏
+    //让画布对象全屏
+    renderer.domElement.requestFullscreen();
+  } else {
+    //退出全屏,使用document对象
+    document.exitFullscreen();
+  }
+});
+
+function render() {
+>>>>>>> f985a6fd0904c5cd8c81a2ed0c6e4f74b0f73301
   renderer.render(scene, camera); //渲染下一帧的时候会调用render函数
 
   requestAnimationFrame(render);
 }
 
+<<<<<<< HEAD
 render();
+=======
+render(); // 监听画面变化，更新渲染画面
+
+window.addEventListener("resize", function () {
+  //更新摄像头
+  camera.aspect = window.innerWidth / window.innerHeight; //更新摄像机的投影矩阵
+
+  camera.updateProjectionMatrix(); //更新渲染器
+
+  renderer.setSize(window.innerWidth, window.innerHeight); //设置渲染器的像素比
+
+  renderer.setPixelRatio(Window.devicePicelRatio);
+});
+>>>>>>> f985a6fd0904c5cd8c81a2ed0c6e4f74b0f73301
 },{"three":"../node_modules/three/build/three.module.js","three/examples/jsm/controls/OrbitControls":"../node_modules/three/examples/jsm/controls/OrbitControls.js","gsap":"../node_modules/gsap/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -46584,7 +46655,11 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+<<<<<<< HEAD
   var ws = new WebSocket(protocol + '://' + hostname + ':' + "36774" + '/');
+=======
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55493" + '/');
+>>>>>>> f985a6fd0904c5cd8c81a2ed0c6e4f74b0f73301
 
   ws.onmessage = function (event) {
     checkedAssets = {};
